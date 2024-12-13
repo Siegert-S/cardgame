@@ -37,10 +37,7 @@ input[type="email"],
     height: 24px;
     padding-left: 4px;
     outline: none;
-    // text-decoration: underline;
-
-    // border-bottom: 1px solid black;
-    background-color: transparent;
+    background-color: white;
 
     &:focus {
         background-color: aquamarine;
@@ -55,18 +52,40 @@ input[type="submit"] {
     }
 }
 
+// input:-webkit-autofill {
+//     appearance: none;
+//     background-color: transparent !important;
+//     color: inherit !important;
+// }
+
+
 input:-webkit-autofill {
-    appearance: none;
-    background-color: transparent !important;
-    color: inherit !important;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+
+    &:hover {
+        -webkit-box-shadow: 0 0 0px 1000px inset lightblue;
+        background-color: lightblue;
+    }
+
+    &:focus {
+        -webkit-box-shadow: 0 0 0px 1000px inset aquamarine;
+        background-color: aquamarine;
+    }
+
+    &:invalid {
+        -webkit-box-shadow: 0 0 0px 1000px red inset !important;
+        background-color: red !important;
+    }
 }
+
 
 .invalid {
     background-color: lightcoral !important;
     border-color: red !important;
 }
 
-.errorMessage{
+.errorMessage {
+    height: 14px;
     color: red;
     padding: 0;
     margin: 0;
