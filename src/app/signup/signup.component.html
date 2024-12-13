@@ -1,0 +1,17 @@
+<div class="loginFrame">
+    <form (ngSubmit)="onSubmit(signupform)" #signupform="ngForm">
+        <label for="email">Email:</label>
+        <input [ngClass]="{'invalid':emailIsInvalid() && email.dirty}" #email="ngModel" [(ngModel)]="loginData.email"
+            id="email" name="email" type="email" required placeholder="Email "
+            pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*(\.[a-zA-Z]{2,})+">
+
+        <label for="password">Password:</label>
+        <input #password="ngModel" [(ngModel)]="loginData.password" id="password" name="password" type="password"
+            required placeholder="password">
+
+        <div class="bntFrame">
+            <input type="button" value="cancel" (click)="cancelSignUp()">
+            <input type="submit" value="Signup" [disabled]="!signupform.valid">
+        </div>
+    </form>
+</div>

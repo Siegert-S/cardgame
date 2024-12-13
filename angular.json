@@ -94,6 +94,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "cardgame:build:production",
+              "serveTarget": "cardgame:serve:production"
+            },
+            "development": {
+              "buildTarget": "cardgame:build:development",
+              "serveTarget": "cardgame:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

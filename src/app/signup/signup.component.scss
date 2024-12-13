@@ -1,0 +1,65 @@
+.loginFrame {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    background-color: whitesmoke;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.bntFrame {
+    display: flex;
+    justify-content: space-between;
+
+    input {
+        cursor: pointer;
+    }
+}
+
+input[type="email"],
+[type="password"],
+[type="text"] {
+    margin-top: 2px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 1px solid lightgray;
+    height: 24px;
+    padding-left: 4px;
+    outline: none;
+    // text-decoration: underline;
+
+    // border-bottom: 1px solid black;
+    background-color: transparent;
+
+    &:focus {
+        background-color: aquamarine;
+    }
+
+
+}
+
+input[type="submit"] {
+    &:disabled {
+        background-color: darkgrey;
+    }
+}
+
+input:-webkit-autofill {
+    appearance: none;
+    background-color: transparent !important;
+    color: inherit !important;
+}
+
+.invalid {
+    background-color: lightcoral !important;
+}

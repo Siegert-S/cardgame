@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ringoffire-d823b": {
+      "hosting": {
+        "cardgame": [
+          "ringoffire-d823b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ringoffire-d823b"
+  }
+}
