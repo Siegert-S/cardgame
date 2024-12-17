@@ -1,23 +1,25 @@
 <div class="loginFrame">
     <form (ngSubmit)="onSubmit(loginform)" #loginform="ngForm">
         <label for="email">Email:</label>
-        <input [ngClass]="{'invalid': !email.valid && ( email.touched)}" #email="ngModel"
-            [(ngModel)]="loginData.email" id="email" name="email" type="email" required placeholder="Email "
-            pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*(\.[a-zA-Z]{2,})+">
+        <input class="inputField" [ngClass]="{'invalid': (!email.valid &&  email.touched) || errMessage}"
+            #email="ngModel" [(ngModel)]="loginData.email" id="email" name="email" type="email" required
+            placeholder="Email " pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*(\.[a-zA-Z]{2,})+">
         <span class="errorMessage"
             [style.visibility]="( !email.touched) ? 'hidden':!email.valid ?  'visible':'hidden'">Please enter a proper
             email address.</span>
 
-        <!-- <p>Dirty: {{ email.dirty }}</p>
-        <p>Touched: {{ email.touched }}</p>
-        <p>Valid: {{ email.valid }}</p>
-        <p>Errors: {{ email.errors| json }}</p> -->
-
         <label for="password">Password:</label>
-        <input #password="ngModel" [(ngModel)]="loginData.password" id="password" name="password" type="password"
-            required placeholder="password">
-        <span class="errorMessage"
-            [style.visibility]="( !errMessage) ? 'hidden':'visible'">{{errMessage}}</span>
+        <div class="passwordFrame inputField" [ngClass]="{'invalid': errMessage}">
+            <input #password="ngModel" [(ngModel)]="loginData.password" id="password" name="password"
+                [type]="showPassword ? 'text':'password'" required placeholder="Password">
+            @if (showPassword) {
+            <mat-icon (click)="switchPasswordVisibility()">visibility</mat-icon>
+            } @else {
+            <mat-icon (click)="switchPasswordVisibility()">visibility_off</mat-icon>
+            }
+        </div>
+
+        <span class="errorMessage" [style.visibility]="( !errMessage) ? 'hidden':'visible'">{{errMessage}}</span>
 
         <div class="bntFrame">
             <input type="button" value="Singup" (click)="signUp()">

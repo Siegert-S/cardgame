@@ -1,0 +1,21 @@
+.lobby-Wrapper {
+    width: 100vw;
+    height: 100vh;
+    max-width: 1024px;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    >div {
+        margin-left: 150px;
+        background-color: lightblue;
+        width: calc(100% - 150px);
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+    }
+}
+

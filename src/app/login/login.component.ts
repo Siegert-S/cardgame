@@ -3,11 +3,12 @@ import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ManageUserService } from '../manage-user.service';
 import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatIconModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -26,7 +27,7 @@ export class LoginComponent {
   ];
 
   userMessages = [
-    'Invalid credentials.',
+    'Invalid email address or password.',
     'The entered email address is invalid.',
     'The user account has been disabled. Please contact support.',
     'No user found with this email address.',
@@ -48,6 +49,8 @@ export class LoginComponent {
   //   'Anmeldung mit Passwort ist derzeit deaktiviert. Bitte kontaktieren Sie den Support.',
   //   'Ein interner Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'
   // ];
+
+  showPassword: boolean = false;
 
   loginData = {
     email: '',
@@ -94,4 +97,9 @@ export class LoginComponent {
       return 'Ein unbekannter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.';
     }
   }
+
+  switchPasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
 }

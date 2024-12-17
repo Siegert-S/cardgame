@@ -24,12 +24,22 @@ form {
 
     input {
         cursor: pointer;
+
+        margin-top: 2px;
+        margin-bottom: 2px;
+        border-radius: 8px;
+        border: 1px solid lightgray;
+        height: 24px;
+        padding-left: 4px;
+        outline: none;
+        background-color: white;
+        box-sizing: border-box;
+
+        width: 40%;
     }
 }
 
-input[type="email"],
-[type="password"],
-[type="text"] {
+.inputField {
     margin-top: 2px;
     margin-bottom: 2px;
     border-radius: 8px;
@@ -38,12 +48,11 @@ input[type="email"],
     padding-left: 4px;
     outline: none;
     background-color: white;
+    box-sizing: border-box;
 
     &:focus {
         background-color: aquamarine;
     }
-
-
 }
 
 input[type="submit"] {
@@ -51,12 +60,6 @@ input[type="submit"] {
         background-color: darkgrey;
     }
 }
-
-// input:-webkit-autofill {
-//     appearance: none;
-//     background-color: transparent !important;
-//     color: inherit !important;
-// }
 
 
 input:-webkit-autofill {
@@ -72,15 +75,14 @@ input:-webkit-autofill {
         background-color: aquamarine;
     }
 
-    &:invalid {
-        -webkit-box-shadow: 0 0 0px 1000px red inset !important;
-        background-color: red !important;
-    }
+    // &:invalid {
+    //     -webkit-box-shadow: 0 0 0px 1000px lightcoral inset !important;
+    //     background-color: red !important;
+    // }
 }
 
 
 .invalid {
-    background-color: lightcoral !important;
     border-color: red !important;
 }
 
@@ -89,6 +91,23 @@ input:-webkit-autofill {
     color: red;
     padding: 0;
     margin: 0;
-    margin-bottom: 16px;
-    font-size: 12px;
+    margin-bottom: 8px;
+    font-size: 10px;
+}
+
+.passwordFrame {
+    display: flex;
+    align-items: center;
+    padding-right: 4px;
+
+    &:has(>input:focus) {
+        background-color: aquamarine;
+    }
+
+    >input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+
+    }
 }

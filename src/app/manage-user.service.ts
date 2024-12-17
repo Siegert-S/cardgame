@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Auth, authState, getAuth, User, user, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, authState, getAuth, User, user, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 
@@ -33,9 +33,9 @@ export class ManageUserService {
   createUser(email: string, password: string) {
     createUserWithEmailAndPassword(this.auth, email, password).then(
       (userCredential) => {
-        console.log('succsess');
         const user = userCredential.user;
         console.log(user.uid);
+        this.router.navigateByUrl('/lobby');
       }).catch(
         (error) => {
           const errorCode = error.code;
@@ -48,7 +48,6 @@ export class ManageUserService {
   loginUser(email: string, password: string): Promise<void | { code: string; message: string }> {
     let result = signInWithEmailAndPassword(this.auth, email, password).then(
       (userCredential) => {
-        // console.log('succsess');
         const user = userCredential.user;
         console.log(user.uid);
         this.router.navigateByUrl('/lobby');
@@ -66,6 +65,17 @@ export class ManageUserService {
           return loginError;
         });
     return result;
+  }
+
+  logout() {
+    signOut(this.auth).then(() => {
+      this.router.navigateByUrl('/login')
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error(errorCode);
+      console.error(errorMessage);
+    })
   }
 
 
